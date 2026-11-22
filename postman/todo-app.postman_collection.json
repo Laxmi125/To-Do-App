@@ -1,0 +1,32 @@
+{
+  "info": {
+    "name": "Todo App API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [{ "key": "baseUrl", "value": "http://localhost:8080" }],
+  "item": [
+    {
+      "name": "Create task",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/api/tasks",
+        "body": { "mode": "raw", "raw": "{\n  \"title\": \"Learn Spring Boot\",\n  \"description\": \"Finish the CRUD project\"\n}" }
+      }
+    },
+    { "name": "Get all tasks", "request": { "method": "GET", "url": "{{baseUrl}}/api/tasks" } },
+    { "name": "Get pending tasks", "request": { "method": "GET", "url": "{{baseUrl}}/api/tasks?completed=false" } },
+    { "name": "Get task by id", "request": { "method": "GET", "url": "{{baseUrl}}/api/tasks/1" } },
+    {
+      "name": "Update task",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/api/tasks/1",
+        "body": { "mode": "raw", "raw": "{\n  \"title\": \"Learn Spring Boot (updated)\",\n  \"description\": \"Push to GitHub\",\n  \"completed\": false\n}" }
+      }
+    },
+    { "name": "Toggle status", "request": { "method": "PATCH", "url": "{{baseUrl}}/api/tasks/1/toggle" } },
+    { "name": "Delete task", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/tasks/1" } }
+  ]
+}
